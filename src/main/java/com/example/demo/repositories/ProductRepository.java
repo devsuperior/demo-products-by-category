@@ -24,7 +24,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 		FROM tb_product
 		INNER JOIN tb_product_category ON tb_product_category.product_id = tb_product.id
 		WHERE :categoryIds IS NULL OR tb_product_category.category_id IN :categoryIds
-		)
+		) as tb_prods
 		""")
 	Page<ProductProjection> searchProducts(List<Long> categoryIds, Pageable pageable);
 }
